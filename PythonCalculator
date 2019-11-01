@@ -1,0 +1,179 @@
+class calculator:
+    def __init__(self):
+        self.x=float(0)
+        self.y=float(0)
+        self.z=float(0)
+        self.n=float(0)
+        self.k=float(0)
+        self.r=float(0)
+        self.s=float(0)
+        self.u=float(0)
+        self.x1=float(0)
+        self.n1=float(0)
+        self.n2=float(0)
+        self.x2=float(0)
+        self.s1=float(0)
+        self.s2=float(0)
+        self.OneSided=False
+        self.degree=float(0)
+        self.deltaU=float(0)
+
+    def add(self,x, y):
+        import math
+        result=x+y
+        return result
+    def subtract(self,x, y):
+        import math
+        result=x-y
+        return result
+    def multiply(self,x, y):
+        import math
+        result=x*y
+    def divide(self,x, y):
+        import math
+        result=x/y
+        return result
+    def graphList(self):
+        import math
+        import matplotlib.pyplot as plt
+        x=input("Please enter a list of x-coordinates: ")
+        y=input("Please enter a list of y-coordinates: ")
+        x=x.split(",")
+        y=y.split(",")
+        rx=[int(i) for i in x]
+        ry=[int(i) for i in y]
+        xtitle=input("Title for x: ")
+        ytitle=input("Title for y: ")
+        plt.xlabel(xtitle)
+        plt.ylabel(ytitle)
+        plt.title("%s vs %s" %(xtitle,ytitle))
+        plt.plot(rx,ry)
+    def graphHistogram(self):
+        import matplotlib.pyplot as plt
+        import math
+        x=input("Please enter a list of x-coordinates: ")
+        x=x.split(",")
+        rx=[int(i) for i in x]
+        title=(input("Title name?: "))
+        plt.hist(rx)
+        plt.title(title)
+        plt.show()
+    def barGraph(self):
+        import matplotlib.pyplot as plt
+        import math
+        x=input("Please enter the x for the bar graph: ")
+        y=input("Please enter the frequencies of x: ")
+        x=x.split(",")
+        y=y.split(",")
+        rx=[int(i) for i in x]
+        xtitle=input("Title for x: ")
+        ytitle=input("Title for y: ")
+        plt.bar(rx,ry)
+        plt.xlabel(xtitle)
+        plt.ylabel(ytitle)
+        plt.title("%s vs %s" %(xtitle,ytitle))
+        
+    def graphScatter(self):
+        import matplotlib.pyplot as plt
+        import math
+        x=input("Please enter a list of x-coordinates: ")
+        y=input("Please enter a list of y-coordinates: ")
+        x=x.split(",")
+        y=y.split(",")
+        rx=[int(i) for i in x]
+        ry=[int (i) for i in y]
+        xtitle=input("Title for x: ")
+        ytitle=input("Title for y: ")
+        title=input("What is the graph title: ")
+        plt.xlabel(xtitle)
+        plt.ylabel(ytitle)
+        plt.title(title)
+        plt.scatter(rx,ry)
+        plt.show()
+    def getPolynomial(self):
+        from numpy.polynomial import polynomial as P
+        import numpy as np
+        import math
+        ppar = input("Please enter the numbers as a list: ")
+        ppar=ppar.split(",")
+        abra = [int (i) for i in ppar]
+        p = np.poly1d(abra)
+        print (p)
+    def rootsOfFunction(self):
+        import math
+        import numpy.polynomial.polynomial as poly
+        import numpy as np
+        ppar = input("Please enter the numbers as a list: ")
+        ppar=ppar.split(",")
+        abbr = [int (i) for i in ppar]
+        alba=[x for x in reversed(abbr)]
+        p = np.poly1d(alba)
+        roots=poly.polyroots(p)
+        return roots
+
+    def log(self,b,x):
+        import math
+        result=math.log(x)/math.log(b)
+        return result
+    def calculate1VarStats(self):
+        import statistics
+        import math
+        uList=input("Please enter a list here: ")
+        u=uList.split(",")
+        results=[int (i) for i in u]
+        print("Mean: ", statistics.mean(results))
+        print("Median: ", statistics.median(results))
+        print("Maximum: ", max(results))
+        print("Minumum: ", min(results))
+        print("The population deviation is: ", statistics.pstdev(results))
+        print("The sample deviation: ", statistics.stdev(results))
+        print("Population Varience: ", statistics.pvariance(results))
+        print("Sample Varience: ", statistics.variance(results))
+    def graphingPolynomial(self):
+        import numpy as np
+        from numpy import polynomial
+        import matplotlib.pyplot as plt
+        import math
+        ppar = input("Please enter the numbers as a list: ")
+        ppar=ppar.split(",")
+        abra = [int (i) for i in ppar]
+        p = np.poly1d(abra)
+        eboolean=input("Do you want end points(yes or no)")
+        if eboolean=="yes":
+            eboolean==True
+        else:
+            eboolean==False
+        xleft=int(input("Select first end of graph(integer)"))
+        xright=int(input("select 2nd end of graph(integer)"))
+        interval=int(input("interval of the y axis graph"))
+        X = np.linspace(xleft,xright,interval,endpoint=eboolean)
+        F = p(X)
+        plt.plot(X,F)
+    def factorial(self,x):
+        import math
+        if x==1:
+            return x
+        else:
+            return x* factorial(x-1)
+    def median(self):
+        import math
+        x= input("Please enter a list of numbers: ")
+        x=x.split(",")
+        x=[int(i) for i in x]
+        median=statistics.median(x)
+    def standardDeviation(self,n):
+        import math
+        x= input("Please enter a list of numbers: ")
+        option=input("Do you want population deviation or sample deviation: ")
+        x=x.split(",")
+        x=[int(i) for i in x]
+        if option=="population deviation":
+            std=statistics.pstdev(x)
+        elif option=="sample deviation":
+            std=statistics.stdev(x)
+        else:
+            return ("Nothing")
+        return std   
+    def hypotestZsingle(self,x,u,s,n):
+        import math
+ 
